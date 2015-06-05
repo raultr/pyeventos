@@ -49,6 +49,21 @@ class EventoOperaciones(APIView):
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class EventosRevisados(APIView):
+	def get(self, request, pk=None, format=None):
+		qs = Evento.objects.all()
+		qs = qs.filter(Q(revisada=1))
+		serializer = EventoSerializer(qs, many=True)
+		return Response(serializer.data)
+
+
+class EventosNoRevisados(APIView):
+	def get(self, request, pk=None, format=None):
+		qs = Evento.objects.all()
+		qs = qs.filter(Q(revisada=0))
+		serializer = EventoSerializer(qs, many=True)
+		return Response(serializer.data)
+
 
 class LargeResultsSetPagination(PageNumberPagination):
     page_size = 1000
