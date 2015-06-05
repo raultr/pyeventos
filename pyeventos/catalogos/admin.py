@@ -21,7 +21,6 @@ class CatalogoAdmin(admin.ModelAdmin):
 
 	def icono_catalogo(self,obj):
 		mini = get_thumbnail(obj.icono, '50x50', upscale=False)
-		print mini
 		return '<img src="/media/%s">' %  unicode(get_thumbnail( obj.icono,'50x50'))
 
 	icono_catalogo.allow_tags = True
