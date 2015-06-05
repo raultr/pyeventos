@@ -10,6 +10,7 @@ from .serializers import EventoSerializer
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView
 from rest_framework import parsers
+from django.db.models import Q
 from .models import Evento
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework.pagination import PageNumberPagination

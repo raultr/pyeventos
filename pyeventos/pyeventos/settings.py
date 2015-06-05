@@ -25,7 +25,13 @@ SECRET_KEY = 'rs-ej3ad6bn^xaj7$!udyy0y34cd^bri0xg!*z)_$o1^ey_m46'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+TEMPLATE_DEBUG = DEBUG
+
+ALLOWED_HOSTS = ['*']
+
+INTERNAL_IPS = ('127.0.0.1', '192.168.122.1','192.168.0.10',)
+
+DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False,}
 
 
 # Application definition
@@ -38,7 +44,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'catalogos',
+    'corsheaders',
+    'catalogos', 
     'catalogos_detalle',
     'eventos',
 )
@@ -55,8 +62,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware
 )
 
 ROOT_URLCONF = 'pyeventos.urls'
@@ -118,3 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CORS_ORIGIN_ALLOW_ALL = True
