@@ -14,6 +14,7 @@ from django.db.models import Q
 from .models import Evento
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework.pagination import PageNumberPagination
+from django.db.models import Q
 
 class EventoOperaciones(APIView):	
 
