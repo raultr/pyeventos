@@ -20,7 +20,7 @@ def request_response_list(request,id_catalogo):
 def request_response_detalle(request,id_catalogo):
 	if request.method == 'GET':
 		listado = id_catalogo.split(',')
-		catalogo_detalle=CatalogoDetalle.objects.filter(catalogos__in=listado)
+		catalogo_detalle=CatalogoDetalle.objects.filter(catalogos__in=listado).order_by('catalogos', 'descripcion1')
 		serializer = CatalogoSerializer(catalogo_detalle, many=True)
 		return Response(serializer.data)
 
@@ -29,7 +29,7 @@ def request_response_detalle(request,id_catalogo):
 def request_response_detalle_cdu_default(request,id_catalogo,cdu_default):
 	if request.method == 'GET':
 		listado = id_catalogo.split(',')
-		catalogo_detalle=CatalogoDetalle.objects.filter(catalogos__in=listado,cdu_default=cdu_default)
+		catalogo_detalle=CatalogoDetalle.objects.filter(catalogos__in=listado,cdu_default=cdu_default).order_by('catalogos', 'descripcion1')
 		serializer = CatalogoSerializer(catalogo_detalle, many=True)
 		return Response(serializer.data)
 

@@ -53,7 +53,8 @@ class EventoOperaciones(APIView):
 
 class EventosRevisados(APIView):
 	def get(self, request, pk=None, format=None):
-		qs = Evento.objects.all()
+		qs = Evento.objects.all().order_by('id').reverse()
+		#qs=Evento.objects.select_related()
 		qs = qs.filter(Q(revisada=1))
 		serializer = EventoSerializer(qs, many=True)
 		return Response(serializer.data)
@@ -61,10 +62,16 @@ class EventosRevisados(APIView):
 
 class EventosNoRevisados(APIView):
 	def get(self, request, pk=None, format=None):
-		qs = Evento.objects.all()
+		qs = Evento.objects.all().order_by('id').reverse()
+		#qs=Evento.objects.select_related()
 		qs = qs.filter(Q(revisada=0))
+	
 		serializer = EventoSerializer(qs, many=True)
+		#persuc = Evento.objects.select_related()
+		#serializer = EventoSerializer(persuc, many=True)
 		return Response(serializer.data)
+
+
 
 
 class LargeResultsSetPagination(PageNumberPagination):

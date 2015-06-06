@@ -30,4 +30,4 @@ class CatalogoDetalle(models.Model):
 
 
 	def __unicode__(self):
-		return '%s: %s' % (self.cdu_catalogo, self.descripcion1)
+		return '%s' % ( self.descripcion1)
