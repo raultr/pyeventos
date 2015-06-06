@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'import_export',
     'catalogos', 
     'catalogos_detalle',
     'eventos',
@@ -114,13 +115,14 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+#USE_TZ = True #Si se habilita este, la hora se adelanta 4 horas mas
 
 
 # Static files (CSS, JavaScript, Images)

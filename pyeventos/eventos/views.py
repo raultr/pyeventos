@@ -47,7 +47,8 @@ class EventoOperaciones(APIView):
 		print "Estoy validando"
 		if serializer.is_valid():
 			print "ya valide"
-			serializer.save()
+			serializer.save(update_fields=["revisada"]) 
+			#serializer.save()
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
